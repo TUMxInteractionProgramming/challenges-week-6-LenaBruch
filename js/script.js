@@ -2,7 +2,12 @@
 console.log("App is alive");
 
 // F) initialize App
-
+function initialize () {
+    $(document).ready(listChannels);
+    console.log("App is initialized");
+    window.setInterval(Message, 10000);
+    console.log("Updating message elements...");
+}
 
 /** #10 global #array of channels #arr*/
 var channels = [
@@ -346,7 +351,7 @@ function createChannelElement(channelObject) {
     // C) attach click listener to <li>, use anonymous function
     document.getElementByTabName('li').addEventListener("click", function() {
         $(this).switchChannel()
-    };
+    }
 }
 
 /**
