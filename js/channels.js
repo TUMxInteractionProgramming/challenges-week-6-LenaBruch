@@ -1,4 +1,5 @@
 
+// E) Ich habe keine AHnung, wie man die dummy-Messages machen soll. So erscheint mir aber falsch...
 var yummy = {
     name: "#Yummy",
     createdOn: new Date(2016, 03, 01), /* month 0 is jan. */
@@ -6,7 +7,7 @@ var yummy = {
     starred: false,
     expiresIn: 100,
     messageCount: 999,
-    messages : []           // #10 #message s property in #chl object
+    messages : ["Hier könnte Ihre Werbung stehen"]           // #10 #message s property in #chl object
 };
 
 var sevencontinents = {
@@ -16,7 +17,7 @@ var sevencontinents = {
     starred: true,
     expiresIn: 60,
     messageCount: 5,
-    messages : []           // #10 #message s property in #chl object
+    messages : ["Why, I thought it was gonna work."]           // #10 #message s property in #chl object
 
 };
 

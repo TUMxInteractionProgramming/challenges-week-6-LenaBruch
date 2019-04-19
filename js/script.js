@@ -1,6 +1,9 @@
 /* start the external action and say hello */
 console.log("App is alive");
 
+// F) initialize App
+
+
 /** #10 global #array of channels #arr*/
 var channels = [
     yummy,
@@ -25,9 +28,10 @@ var currentLocation = {
 
 /**
  * Switch channels name in the right app bar
+ * A) add parameter channelElement
  * @param channelObject
- */
-function switchChannel(channelObject) {
+ */ 
+function switchChannel(channelObject, channelElement) {
     // Log the channel switch
     console.log("Tuning in to channel", channelObject);
 
@@ -49,14 +53,21 @@ function switchChannel(channelObject) {
     $('#channel-star i').addClass(channelObject.starred ? 'fas' : 'far');
 
 
+    //B) reference channelElement to <li>
+    document.getElementsByTagName('li').removeClass('selected').$(this).addClass('selected')
+    
     /* highlight the selected #channel.
        This is inefficient (jQuery has to search all channel list items), but we'll change it later on */
-    $('#channels li').removeClass('selected');
-    $('#channels li:contains(' + channelObject.name + ')').addClass('selected');
+    //$('#channels li').removeClass('selected');
+    //$('#channels li:contains(' + channelObject.name + ')').addClass('selected');
 
     /* store selected channel in global variable */
     currentChannel = channelObject;
+
+    // D) call showMessages here
+    $call(showMessages)
 }
+
 
 /* liking a channel on #click */
 function star() {
@@ -225,6 +236,10 @@ function listChannels(criterion) {
     for (i = 0; i < channels.length; i++) {
         $('#channels ul').append(createChannelElement(channels[i]));
     };
+    
+    //add class 'selected' to current channel --> warum führt dies zum Verschwinden meiner channels?
+    currentChannel.addClass('selected');
+
 }
 
 /**
@@ -327,6 +342,11 @@ function createChannelElement(channelObject) {
 
     // return the complete channel
     return channel;
+
+    // C) attach click listener to <li>, use anonymous function
+    document.getElementByTabName('li').addEventListener("click", function() {
+        $(this).switchChannel()
+    };
 }
 
 /**
@@ -354,4 +374,9 @@ function abortCreationMode() {
     $('#app-bar-create').removeClass('show');
     $('#button-create').hide();
     $('#button-send').show();
+}
+
+// C) Create showMessage function #show
+function showMessages() {
+    $.each(channels, Channel(messages))
 }
